@@ -17,6 +17,6 @@ public class MainTest {
 				tr2.join();
 				
 				Graphe graphe = new Graphe(tr.getResultTraceroute());
-				System.out.println("C'est la fin");
+				//System.out.println("C'est la fin");
 	}
 }
