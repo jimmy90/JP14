@@ -1,13 +1,30 @@
 package traceroute;
 
+import geolocalisation.LocationByGeoIp;
+import geolocalisation.LocationByHostIp;
+
 public class Sommet {
-	private String noeud;
+	private String noeud,cityName,countryName;
 	private double longitude, latitude;
 	
 	public Sommet(String Ip) {
 		// TODO Auto-generated constructor stub
 		this.noeud=Ip;
 		longitude=latitude=0;
+		if (MainTest.serviceGeoChoice==1){
+			System.out.println(Ip);
+			LocationByGeoIp loc= new LocationByGeoIp(Ip);
+			cityName=loc.getCityName();
+			countryName=loc.getCountryName();
+			longitude=loc.getLongitude();
+			latitude=loc.getLatitude();
+		}else{
+			LocationByHostIp loc = new LocationByHostIp(Ip);
+			cityName=loc.getCityName();
+			countryName=loc.getCountryName();
+			longitude=loc.getLongitude();
+			latitude=loc.getLatitude();
+		}
 	}
 	
 	public Sommet(String Ip, double longitude, double latitude){
@@ -58,6 +75,22 @@ public class Sommet {
 		return this.noeud+"( Longitude= "+this.longitude+
 				", latitude= "+this.latitude+
 				")";
+	}
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 	
 	

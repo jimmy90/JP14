@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -24,15 +26,25 @@ public class Traceroute extends Thread {
 		// TODO Auto-generated constructor stub
 		this.url = url;
 		this.hops = DEFAULTHOPS;
-		tmpSommet= new Sommet("192.168.1.254");
+		this.localeIp();
 		
+	}
+	
+	private void localeIp(){
+		try {
+			InetAddress ip = InetAddress.getLocalHost();
+			this.tmpSommet= new Sommet(ip.getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Traceroute(String url, int hops) {
 		// TODO Auto-generated constructor stub
 		this.url = url;
 		this.hops = hops;
-		tmpSommet= new Sommet("192.168.1.254");
+		this.localeIp();
 	}
 
 	public synchronized void addArc(Sommet v1, Sommet v2) {
