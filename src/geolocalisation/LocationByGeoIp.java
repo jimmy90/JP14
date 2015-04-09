@@ -7,7 +7,14 @@ import java.nio.file.Paths;
 
 import com.maxmind.geoip.Location;
 import com.maxmind.geoip.LookupService;
-
+/**
+ * 
+ * @author Jimmy
+ * Determine les coordonnées GPS, le pays et la ville de localisation
+ * avec le systeme de géolocalisation GéoIP.
+ * Il est nécessaire d'avoir une adresse IP
+ * 
+ */
 public class LocationByGeoIp {
 	private final static Path localePath = Paths
 			.get("GeoIP_ressources\\GeoLiteCity.dat");

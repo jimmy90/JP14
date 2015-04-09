@@ -14,7 +14,14 @@ import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
+/**
+ * 
+ * @author Corentin
+ * Determine les coordonnées GPS, le pays et la ville de localisation
+ * avec le systeme de géolocalisation HostIP.
+ * Il est nécessaire d'avoir une adresse IP
+ * 
+ */
 public class LocationByHostIp {
 	private double longitude,latitude;
 	private String cityName,countryName;
